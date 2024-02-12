@@ -5,12 +5,22 @@
 
 #include <cstddef>
 
-class StackArr {
+class StackList {
+private:
+	struct Node{
+		Complex data = (0, 0);
+		Node* next = nullptr;
+		Node(Complex c);
+		Node(Complex c, Node* n);
+		Node(const Node& n);
+	};
+	Node* head = nullptr;
+
 public:
-	StackArr() = default;
-	StackArr(const StackArr& s) noexcept;
-	~StackArr() noexcept;
-	StackArr& operator=(const StackArr& s) noexcept;
+	StackList() = default;
+	StackList(const StackList& s) noexcept;
+	~StackList() noexcept;
+	StackList& operator=(const StackList& s) noexcept;
 
 	void Push(const Complex& c);
 	void Pop() noexcept;
@@ -22,10 +32,6 @@ public:
 
 	//size_t size() const noexcept;
 	//size_t capacity() const noexcept;
-private:
-	Complex* data = nullptr;
-	std::ptrdiff_t _size=0;
-	std::ptrdiff_t _capacity = 0;
 
 };
 

@@ -55,8 +55,21 @@ const Complex& StackArr::Top() const {
 	return data[_size - 1];
 }
 
+Complex& StackArr::Top()
+{
+	if (_size == 0) {
+		throw std::exception("There are no elements in Stack");
+	}
+	return data[_size - 1];
+}
+
 bool StackArr::IsEmpty() const noexcept {
 	return _size == 0;
+}
+
+void StackArr::Clear() noexcept
+{
+	_size = 0;
 }
 
 //size_t StackArr::size() const noexcept
