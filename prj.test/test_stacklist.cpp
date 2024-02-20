@@ -12,6 +12,7 @@ TEST_CASE("stackarr test") {
 	my_stack.Push(Complex(2, 7));
 
 	CHECK_EQ(my_stack.Top(), Complex(2, 7));
+
 	my_stack.Pop();
 	CHECK_EQ(my_stack.Top(), Complex(3, 5));
 

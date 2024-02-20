@@ -48,6 +48,7 @@ void StackList::Push(const Complex& c)
 
 void StackList::Pop() noexcept
 {
+
 	if (!IsEmpty()) {
 		Node* tmp = head->next;
 		delete head;
