@@ -1,7 +1,7 @@
 #include"queuelist.hpp"
 
 
-QueueList::QueueList(const QueueList& q) noexcept{
+QueueLst::QueueLst(const QueueLst& q) noexcept{
 	Node* it = q.head_;
 	while (it != nullptr) {
 		Push(it->data);
@@ -9,13 +9,13 @@ QueueList::QueueList(const QueueList& q) noexcept{
 	}
 }
 
-QueueList::~QueueList() noexcept
+QueueLst::~QueueLst() noexcept
 {
 	Clear();
 
 }
 
-QueueList& QueueList::operator=(const QueueList& q) noexcept
+QueueLst& QueueLst::operator=(const QueueLst& q) noexcept
 {
 	Clear();
 	Node* it = q.head_;
@@ -26,7 +26,7 @@ QueueList& QueueList::operator=(const QueueList& q) noexcept
 	return *this;
 }
 
-void QueueList::Push(const Complex& c)
+void QueueLst::Push(const Complex& c)
 {
 
 	Node* n = new Node;
@@ -43,7 +43,7 @@ void QueueList::Push(const Complex& c)
 	}
 }
 
-void QueueList::Pop() noexcept
+void QueueLst::Pop() noexcept
 {
 	if (!IsEmpty()) {
 		Node* n = head_->next;
@@ -52,7 +52,7 @@ void QueueList::Pop() noexcept
 	}
 }
 
-Complex& QueueList::Top()
+Complex& QueueLst::Top()
 {
 	if (IsEmpty()) {
 		throw std::exception("There are no elements in queue");
@@ -60,12 +60,12 @@ Complex& QueueList::Top()
 	return head_->data;
 }
 
-bool QueueList::IsEmpty()
+bool QueueLst::IsEmpty()
 {
 	return head_==nullptr;
 }
 
-void QueueList::Clear() noexcept
+void QueueLst::Clear() noexcept
 {
 	while (!IsEmpty()) {
 		Pop();
@@ -73,7 +73,7 @@ void QueueList::Clear() noexcept
 	head_ = nullptr;
 }
 
-void QueueList::print()
+void QueueLst::print()
 {
 	Node* it = head_;
 	while (it != nullptr) {

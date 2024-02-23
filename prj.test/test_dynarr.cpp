@@ -5,11 +5,11 @@
 
 TEST_CASE("dynarr ctor") {
 	DynArr arr_def;
-	CHECK_EQ(arr_def.size(), 0);
+	CHECK_EQ(arr_def.Size(), 0);
 	const int size = 5;
 	DynArr arr_s(size);
 	CHECK_EQ(arr_s[0], 0);
-	CHECK_EQ(arr_s.size(), size);
+	CHECK_EQ(arr_s.Size(), size);
 	CHECK_THROWS(DynArr(-size));
 }
 
@@ -17,16 +17,16 @@ TEST_CASE("dynarr op") {
 	const int size = 5;
 	DynArr arr1(size);
 	CHECK_EQ(arr1[0], 0);
-	CHECK_EQ(arr1[arr1.size() - 1], 0);
+	CHECK_EQ(arr1[arr1.Size() - 1], 0);
 	CHECK_THROWS(arr1[-1]);
-	CHECK_THROWS(arr1[arr1.size()]);
+	CHECK_THROWS(arr1[arr1.Size()]);
 }
 
 TEST_CASE("check") {
 	DynArr da(4);
-	CHECK_EQ(da.size(), 4);
+	CHECK_EQ(da.Size(), 4);
 	da.Resize(3);
-	CHECK_EQ(da.size(), 3);
+	CHECK_EQ(da.Size(), 3);
 	da[2] = 2.2f;
 	float x = da[2];
 	DynArr da2 = da;
@@ -44,7 +44,7 @@ TEST_CASE("check") {
 TEST_CASE("Testing constructors + destructor + operator=") {
 	SUBCASE("Testing Default Constructor") {
 		DynArr mas;
-		CHECK(mas.size() == 0);
+		CHECK(mas.Size() == 0);
 		CHECK(mas.capacity() == 0);
 	}
 	SUBCASE("Testing Copy Constructor") {
@@ -53,7 +53,7 @@ TEST_CASE("Testing constructors + destructor + operator=") {
 		mas.Resize(15);
 		mas.Resize(7);
 		DynArr mas_2(mas);
-		CHECK(mas.size() == mas_2.size());
+		CHECK(mas.Size() == mas_2.Size());
 		CHECK(mas.capacity() == mas_2.capacity());
 		CHECK(mas == mas_2);
 	}
@@ -62,7 +62,7 @@ TEST_CASE("Testing constructors + destructor + operator=") {
 	SUBCASE("Testing Constructor with argument") {
 		DynArr mas(10);
 		CHECK(mas.capacity() == 10);
-		CHECK(mas.size() == 10);
+		CHECK(mas.Size() == 10);
 		for (size_t i = 0; i < mas.capacity(); i++) {
 			CHECK(mas[i] == 0);
 		}
@@ -76,14 +76,14 @@ TEST_CASE("Resize") {
 
 
 	a.Resize(15);
-	CHECK((a.capacity() == 15 && a.size() == 15));
+	CHECK((a.capacity() == 15 && a.Size() == 15));
 	for (size_t i = 10; i < 15; i++) {
 		CHECK(a[i] == 0);
 	}
 	a.Resize(8);
-	CHECK((a.capacity() == 15 && a.size() == 8));
+	CHECK((a.capacity() == 15 && a.Size() == 8));
 	a.Resize(10);
-	CHECK((a.capacity() == 15 && a.size() == 10));
+	CHECK((a.capacity() == 15 && a.Size() == 10));
 	CHECK(a[9] == 0);
 
 }

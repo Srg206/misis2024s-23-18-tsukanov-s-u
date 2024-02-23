@@ -1,6 +1,6 @@
 #include "stacklist.hpp"
 
-StackList::StackList(const StackList& s) noexcept
+StackLst::StackLst(const StackLst& s) noexcept
 {
 	Node* iter_s = s.head;
 	Push(s.head->data);
@@ -15,13 +15,13 @@ StackList::StackList(const StackList& s) noexcept
 	}
 }
 
-StackList::~StackList() noexcept
+StackLst::~StackLst() noexcept
 {
 	Clear();
 	head = nullptr;
 }
 
-StackList& StackList::operator=(const StackList& s) noexcept
+StackLst& StackLst::operator=(const StackLst& s) noexcept
 {
 	Clear();
 	Node* iter_s = s.head;
@@ -38,7 +38,7 @@ StackList& StackList::operator=(const StackList& s) noexcept
 	return *this;
 }
 
-void StackList::Push(const Complex& c)
+void StackLst::Push(const Complex& c)
 {
 
 	Node* newNode = new Node(c);
@@ -46,7 +46,7 @@ void StackList::Push(const Complex& c)
 	head = newNode;
 }
 
-void StackList::Pop() noexcept
+void StackLst::Pop() noexcept
 {
 
 	if (!IsEmpty()) {
@@ -56,7 +56,7 @@ void StackList::Pop() noexcept
 	}
 }
 
-const Complex& StackList::Top() const
+const Complex& StackLst::Top() const
 {
 	if (IsEmpty()) {
 		throw(std::exception("The stack is empty"));
@@ -64,7 +64,7 @@ const Complex& StackList::Top() const
 	return head->data;
 }
 
-Complex& StackList::Top()
+Complex& StackLst::Top()
 {
 	if (IsEmpty()) {
 		throw(std::exception("The stack is empty"));
@@ -72,31 +72,31 @@ Complex& StackList::Top()
 	return head->data;
 }
 
-bool StackList::IsEmpty() const noexcept
+bool StackLst::IsEmpty() const noexcept
 {
 	return head==nullptr;
 }
 
-void StackList::Clear() noexcept
+void StackLst::Clear() noexcept
 {
 	while (head != nullptr) {
 		Pop();
 	}
 }
 
-StackList::Node::Node(Complex c)
+StackLst::Node::Node(Complex c)
 {
 	data = c;
 	next = nullptr;
 }
 
-StackList::Node::Node(Complex c, Node* n)
+StackLst::Node::Node(Complex c, Node* n)
 {
 	data = c;
 	next = n;
 }
 
-StackList::Node::Node(const Node& n)
+StackLst::Node::Node(const Node& n)
 {
 	data = n.data;
 	next = n.next;

@@ -5,29 +5,7 @@ Rational::Rational(int64_t n) {
 	num = n;
 	den = 1;
 }
-int64_t Rational::get_den() const {
-	return den;
-}
-int64_t Rational::get_num() const{
-	return num;
-}
 
-void Rational::set_den(int64_t d) {
-	if (d == 0) {
-		throw std::exception(" Erorr determinator can`t be equal zero !!!! ");
-	}
-	else if (d < 0) {
-		num *= -1;
-		d *= -1;
-	}
-	shorten_the_fraction();
-	den = d;
-}
-
-void Rational::set_num(const int64_t n) {
-	num = n;
-	shorten_the_fraction();
-}
 
 int64_t greatest_common_divisor(int64_t a, int64_t b) {
 	a = abs(a);
@@ -96,58 +74,81 @@ Rational& Rational::operator/=(const Rational& rhs) {
 	return *this;
 }
 
-std::istream& operator>>(std::istream& in, Rational& r) {
-	
-	int64_t n=0;
-	int64_t d=0;
+int64_t Rational::get_num() const
+{
+	return num;
+}
+
+int64_t Rational::get_den() const
+{
+	return den;
+}
+
+std::ostream& Rational::WriteTo(std::ostream& out) const noexcept
+{
+	out << num << '/' << den;
+	return out;
+	// TODO: вставьте здесь оператор return
+}
+
+std::istream& Rational::ReadFrom(std::istream& in)
+{
+	int64_t n = 0;
+	int64_t d = 0;
 	char bar = ' ';
 	in >> n >> bar >> d;
-	if (bar == r.div) {
-		r.set_num(n);
-		r.set_den(d);
-		r.shorten_the_fraction();
+	if (bar == '/') {
+		num = n;
+		den = d;
+		shorten_the_fraction();
 	}
-	else{
+	else {
 		throw(std::exception("Format is incorrect"));
 	}
+	return in;
+}
+
+std::istream& operator>>(std::istream& in, Rational& r) {
+	
+	r.ReadFrom(in);
 	return in;
 
 }
 
 
 std::ostream& operator<<(std::ostream& out, const Rational& r) {
-	out << r.get_num() << r.div << r.get_den();
+	r.WriteTo(out);
 	return out;
 }
-bool operator==(const Rational& a, const Rational& b) {
-	if (a.get_den() == b.get_den() && a.get_num() == b.get_num()) {
+bool Rational::operator==(const Rational& a) {
+	if (den == a.get_den() && get_num() == a.get_num()) {
 		return true;
 	}
 	else{
 		return false;
 	}
 }
-bool operator!=( const Rational& a, const Rational& b) {
-	return !(a == b);
+bool Rational::operator!=( const Rational& a) {
+	return !(*(this)==a);
 }
-bool operator<(const Rational& a, const Rational& b) {
-	int64_t tmp_den = least_common_multiple(a.get_den(),b.get_den());
-	int64_t a_num((tmp_den / a.get_den()) * a.get_num());
-	int64_t b_num((tmp_den / b.get_den()) * b.get_num());
+bool Rational::operator<(const Rational& a) {
+	int64_t tmp_den = least_common_multiple(get_den(),a.get_den());
+	int64_t a_num((tmp_den / get_den()) * get_num());
+	int64_t b_num((tmp_den / a.get_den()) * a.get_num());
 
-	if (a.get_num() < b.get_num()) {
+	if (a_num < b_num) {
 		return true;
 	}
 	else {
 		return false;
 	}
 }
-bool operator<=( const Rational& a,const Rational& b) {
-	int64_t tmp_den = least_common_multiple(a.get_den(),b.get_den());
-	int64_t a_num((tmp_den / a.get_den()) * a.get_num());
-	int64_t b_num((tmp_den / b.get_den()) * b.get_num());
+bool Rational::operator<=( const Rational& a) {
+	int64_t tmp_den = least_common_multiple(get_den(),a.get_den());
+	int64_t a_num((tmp_den / get_den()) * get_num());
+	int64_t b_num((tmp_den / a.get_den()) * a.get_num());
 
-	if (a.get_num() <= b.get_num()) {
+	if (a_num <= b_num) {
 		return true;
 	}
 	else {
@@ -156,24 +157,24 @@ bool operator<=( const Rational& a,const Rational& b) {
 }
 
 
-bool operator>(const Rational& a, const Rational& b) {
-	int64_t tmp_den = least_common_multiple(a.get_den(),b.get_den());
-	int64_t a_num((tmp_den / a.get_den()) * a.get_num());
-	int64_t b_num((tmp_den / b.get_den()) * b.get_num());
+bool Rational::operator>(const Rational& a) {
+	int64_t tmp_den = least_common_multiple(a.get_den(),get_den());
+	int64_t a_num((tmp_den / get_den()) * get_num());
+	int64_t b_num((tmp_den / a.get_den()) * a.get_num());
 
-	if (a.get_num() > b.get_num()) {
+	if (a_num > b_num) {
 		return true;
 	}
 	else {
 		return false;
 	}
 }
-bool operator>=( const Rational& a,const Rational& b) {
-	int64_t tmp_den = least_common_multiple(a.get_den(),b.get_den());
-	int64_t a_num((tmp_den / a.get_den()) * a.get_num());
-	int64_t b_num((tmp_den / b.get_den()) * b.get_num());
+bool Rational::operator>=( const Rational& a) {
+	int64_t tmp_den = least_common_multiple(get_den(),a.get_den());
+	int64_t a_num((tmp_den / get_den()) * get_num());
+	int64_t b_num((tmp_den / a.get_den()) * a.get_num());
 
-	if (a.get_num() >= b.get_num()) {
+	if (a_num >= b_num) {
 		return true;
 	}
 	else {

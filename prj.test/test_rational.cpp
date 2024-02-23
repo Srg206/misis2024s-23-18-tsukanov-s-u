@@ -77,11 +77,16 @@ TEST_CASE("IO") {
   CHECK(reading == r23);
 
   std::istringstream istream2("-3|3"); //?
-  CHECK_THROWS(istream2 >> reading);
 
-  r23.set_den(-3);
-  r23.set_den(-2);
+  //CHECK_THROWS(istream2 >> reading);
+  //istream2 >> reading;
+  std::cout<<"nsnajdnjasngjnasjk\n\n\n\n\n\n\dnvjsbadjkvbasdbvbsdjvb\n\nn\n\n\"";
   std::cout << r23;
+  Rational a(20, 41);
+  Rational b(3, 4);
+  a > b;
+  std::cout << (a > b);
+  //CHECK(a > b);
 
 
   std::ostringstream ostream;

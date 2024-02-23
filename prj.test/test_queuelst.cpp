@@ -3,7 +3,7 @@
 #include "doctest.h"
 #include<iostream>
 TEST_CASE("ctor") {
-	QueueList my_queue;
+	QueueLst my_queue;
 	CHECK_THROWS(my_queue.Top());
 	CHECK_EQ(my_queue.IsEmpty(), 1);
 
@@ -17,7 +17,7 @@ TEST_CASE("ctor") {
 
 
 
-	QueueList my_queue2;
+	QueueLst my_queue2;
 	my_queue2.Push(Complex(1, 1));
 	my_queue2.Push(Complex(2, 2));
 	my_queue2.Push(Complex(3, 4));
@@ -53,7 +53,7 @@ TEST_CASE("ctor") {
 
 	//CHECK_EQ(my_queue.Top(), Complex(1, 1));
 
-	QueueList a(my_queue);
+	QueueLst a(my_queue);
 	//CHECK_EQ(a.Top(), Complex(6, 6));
 
 	my_queue.Clear();

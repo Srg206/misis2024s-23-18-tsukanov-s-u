@@ -4,7 +4,7 @@
 
 
 TEST_CASE("stackarr test") {
-	StackList my_stack;
+	StackLst my_stack;
 	CHECK_THROWS(my_stack.Top());
 	CHECK_EQ(my_stack.IsEmpty(), 1);
 
@@ -18,12 +18,12 @@ TEST_CASE("stackarr test") {
 
 
 
-	StackList my_stack2;
+	StackLst my_stack2;
 	my_stack2.Push(Complex(1, 1));
 	my_stack = my_stack2;
 	CHECK_EQ(my_stack.Top(), Complex(1, 1));
 
-	StackList a(my_stack);
+	StackLst a(my_stack);
 	CHECK_EQ(a.Top(), Complex(1, 1));
 
 	my_stack.Push(Complex(2.3, 7.3));

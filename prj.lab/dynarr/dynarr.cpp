@@ -39,7 +39,7 @@ DynArr& DynArr::operator=(const DynArr& arr) {
 	return *this;
 }
 
-ptrdiff_t DynArr::size() {
+ptrdiff_t DynArr::Size() {
 	return size_;
 }
 
@@ -110,10 +110,10 @@ float& DynArr::operator[](ptrdiff_t idx) {
 
 bool operator==(DynArr& a, DynArr& b) {
 	bool flag = true;
-	if (a.size() != b.size() || a.capacity() != b.capacity()) {
+	if (a.Size() != b.Size() || a.capacity() != b.capacity()) {
 		flag = false;
 	}
-	for (size_t i = 0; i < a.size(); i++) {
+	for (size_t i = 0; i < a.Size(); i++) {
 		if (a[i] != b[i]) {
 			flag = false;
 		}

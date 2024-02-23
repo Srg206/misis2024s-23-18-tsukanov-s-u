@@ -1,6 +1,6 @@
 #pragma once
 #include"../complex/complex.hpp"
-class QueueList {
+class QueueLst {
 
 private:
 	struct Node {
@@ -11,11 +11,11 @@ private:
 	Node* tail_ = nullptr;
 
 public:
-	QueueList() = default;
-	QueueList(const QueueList& q) noexcept;
-	~QueueList() noexcept;
+	QueueLst() = default;
+	QueueLst(const QueueLst& q) noexcept;
+	~QueueLst() noexcept;
 
-	QueueList& operator=(const QueueList& q) noexcept;
+	QueueLst& operator=(const QueueLst& q) noexcept;
 
 	void Push(const Complex& c);
 	void Pop() noexcept;

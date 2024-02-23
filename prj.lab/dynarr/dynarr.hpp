@@ -12,8 +12,8 @@ public:
 
 	DynArr& operator=(const DynArr& arr);
 	
-	std::ptrdiff_t size();
-	std::ptrdiff_t capacity();
+	std::ptrdiff_t Size();
+	//std::ptrdiff_t capacity();
 	void Resize(std::ptrdiff_t s);
 	const float& operator[](std::ptrdiff_t idx) const;
 	float& operator[](std::ptrdiff_t idx);

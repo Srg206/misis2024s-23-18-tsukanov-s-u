@@ -5,7 +5,7 @@
 
 #include <cstddef>
 
-class StackList {
+class StackLst {
 private:
 	struct Node{
 		Complex data = (0, 0);
@@ -17,10 +17,10 @@ private:
 	Node* head = nullptr;
 
 public:
-	StackList() = default;
-	StackList(const StackList& s) noexcept;
-	~StackList() noexcept;
-	StackList& operator=(const StackList& s) noexcept;
+	StackLst() = default;
+	StackLst(const StackLst& s) noexcept;
+	~StackLst() noexcept;
+	StackLst& operator=(const StackLst& s) noexcept;
 
 	void Push(const Complex& c);
 	void Pop() noexcept;
