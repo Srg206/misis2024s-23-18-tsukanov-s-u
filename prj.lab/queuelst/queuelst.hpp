@@ -1,5 +1,6 @@
 #pragma once
 #include"../complex/complex.hpp"
+#include<iostream>
 class QueueLst {
 
 private:
@@ -22,7 +23,7 @@ public:
 	Complex& Top();
 	bool IsEmpty();
 	void Clear() noexcept;
-	void print();
+	//void print();
 
 
 

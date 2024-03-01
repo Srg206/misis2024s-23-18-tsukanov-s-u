@@ -1,4 +1,4 @@
-#include"queuelist.hpp"
+#include"queuelst.hpp"
 
 
 QueueLst::QueueLst(const QueueLst& q) noexcept{
@@ -72,13 +72,13 @@ void QueueLst::Clear() noexcept
 	}
 	head_ = nullptr;
 }
-
-void QueueLst::print()
-{
-	Node* it = head_;
-	while (it != nullptr) {
-		std::cout << it->data<<" <- ";
-		it = it->next;
-	}
-	std::cout<<std::endl;
-}
+//
+//void QueueLst::print()
+//{
+//	Node* it = head_;
+//	while (it != nullptr) {
+//		std::cout << it->data<<" <- ";
+//		it = it->next;
+//	}
+//	std::cout<<std::endl;
+//}

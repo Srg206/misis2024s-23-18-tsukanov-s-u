@@ -1,4 +1,4 @@
-#include "../prj.lab/queuelist/queuelist.hpp"
+#include "../prj.lab/queuelst/queuelst.hpp"
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include<iostream>
@@ -24,7 +24,7 @@ TEST_CASE("ctor") {
 	my_queue2.Push(Complex(5, 5));
 	my_queue2.Push(Complex(6, 6));
 	my_queue = my_queue2;
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Clear();
 
 	my_queue.Push(Complex(1, 1));
@@ -32,23 +32,23 @@ TEST_CASE("ctor") {
 	my_queue.Push(Complex(3, 4));
 	my_queue.Push(Complex(5, 5));
 	my_queue.Push(Complex(6, 6));
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
-	my_queue.print();
+	//my_queue.print();
 	my_queue.Pop();
 
 	//CHECK_EQ(my_queue.Top(), Complex(1, 1));
