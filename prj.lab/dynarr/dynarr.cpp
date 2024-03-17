@@ -3,10 +3,11 @@
 DynArr::DynArr(const DynArr& arr) {
 	size_ = arr.size_;
 	capacity_ = arr.capacity_;
-	data_ = new float[capacity_];
+	data_.reset();
+	data_ = std::unique_ptr<float>(new float[capacity_]);
 	for (size_t i = 0; i < capacity_; i++)
 	{
-		data_[i] = arr.data_[i];
+		data_.get()[i] = arr.data_.get()[i];
 	}
 }
 
@@ -23,25 +24,25 @@ DynArr::DynArr(std::ptrdiff_t s) {
 	}
 	size_ = s;
 	capacity_ = s;
-	data_ = new float[s];
+	data_ = std::unique_ptr<float>(new float[s]);
 	for (size_t i = 0; i < s; i++) {
-		data_[i] = 0;
+		data_.get()[i] = 0;
 	}
 }
 
 DynArr::~DynArr() {
-	delete[] data_;
-	data_ = nullptr;
+	data_.reset();
+	//data_.get() = nullptr;
 }
 
 DynArr& DynArr::operator=(const DynArr& arr) {
 	size_ = arr.size_;
 	capacity_ = arr.capacity_;
 	data_ = nullptr;
-	data_ = new float[capacity_];
+	data_ = std::unique_ptr<float>(new float[capacity_]);
 	for (size_t i = 0; i < capacity_; i++)
 	{
-		data_[i] = arr.data_[i];
+		data_.get()[i] = arr.data_.get()[i];
 	}
 	return *this;
 }
@@ -69,28 +70,28 @@ void DynArr::Resize(ptrdiff_t s) {
 	}
 	if (s < size_) {
 		for (size_t i = s; i < size_; i++) {
-			data_[i] = 0;
+			data_.get()[i] = 0;
 		}
 		size_ = s;
 	}
 	else if (s <= capacity_) {
 		for (size_t i = size_; i < s; i++) {
-			data_[i] = 0;
+			data_.get()[i] = 0;
 		}
 		size_ = s;
 	}
 	else if (s > capacity_) {
 		float* tmp = new float[size_];
 		for (size_t i = 0; i < size_; i++) {
-			tmp[i] = data_[i];
+			tmp[i] = data_.get()[i];
 		}
-		data_ = new float[s];
+		data_ = std::unique_ptr<float>(new float[s]);
 		for (size_t i = 0; i < s; i++) {
 			if (i < size_) {
-				data_[i] = tmp[i];
+				data_.get()[i] = tmp[i];
 			}
 			else {
-				data_[i] = 0;
+				data_.get()[i] = 0;
 			}
 		}
 		delete[] tmp;
@@ -109,7 +110,7 @@ const float& DynArr::operator[](ptrdiff_t idx)const {
 		throw std::exception("Index is less than 0 !!!");
 	}
 	else {
-		return data_[idx];
+		return data_.get()[idx];
 	}
 }
 float& DynArr::operator[](ptrdiff_t idx) {
@@ -120,7 +121,7 @@ float& DynArr::operator[](ptrdiff_t idx) {
 		throw std::exception("Index is less than 0 !!!");
 	}
 	else {
-		return data_[idx];
+		return data_.get()[idx];
 	}
 }
 
