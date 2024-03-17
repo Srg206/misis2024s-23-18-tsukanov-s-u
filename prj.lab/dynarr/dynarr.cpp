@@ -10,6 +10,13 @@ DynArr::DynArr(const DynArr& arr) {
 	}
 }
 
+DynArr::DynArr(DynArr&& arr)
+{
+	std::swap(data_, arr.data_);
+	std::swap(size_, arr.size_);
+	std::swap(capacity_, arr.capacity_);
+}
+
 DynArr::DynArr(std::ptrdiff_t s) {
 	if (s < 0) {
 		throw std::exception("Size is less than 0 !!!");
@@ -39,13 +46,22 @@ DynArr& DynArr::operator=(const DynArr& arr) {
 	return *this;
 }
 
+DynArr& DynArr::operator=(DynArr&& arr)
+{
+	std::swap(data_, arr.data_);
+	std::swap(size_, arr.size_);
+	std::swap(capacity_, arr.capacity_);
+
+	return *this;
+}
+
 ptrdiff_t DynArr::Size() {
 	return size_;
 }
-
-ptrdiff_t DynArr::capacity() {
-	return capacity_;
-}
+//
+//ptrdiff_t DynArr::capacity() {
+//	return capacity_;
+//}
 
 void DynArr::Resize(ptrdiff_t s) {
 	if (s < 0) {
@@ -110,7 +126,7 @@ float& DynArr::operator[](ptrdiff_t idx) {
 
 bool operator==(DynArr& a, DynArr& b) {
 	bool flag = true;
-	if (a.Size() != b.Size() || a.capacity() != b.capacity()) {
+	if (a.Size() != b.Size()) {
 		flag = false;
 	}
 	for (size_t i = 0; i < a.Size(); i++) {

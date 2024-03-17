@@ -5,4 +5,5 @@ add_subdirectory(stackarr)
 add_subdirectory(stacklst)
 add_subdirectory(queuelst)
 add_subdirectory(queuearr)
+add_subdirectory(queuelstpr)
 

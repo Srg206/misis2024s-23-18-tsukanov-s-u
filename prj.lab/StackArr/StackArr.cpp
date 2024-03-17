@@ -9,6 +9,13 @@ StackArr::StackArr(const StackArr& s) noexcept {
 	}
 }
 
+StackArr::StackArr(StackArr&& s) noexcept
+{
+	std::swap(data,s.data);
+	std::swap(_size,s._size);
+	std::swap(_capacity,s._capacity);
+}
+
 StackArr::~StackArr() noexcept {
 	delete[] data;
 	data = nullptr;
@@ -21,6 +28,14 @@ StackArr& StackArr::operator=(const StackArr& s) noexcept {
 	for (size_t i = 0; i < _size; i++) {
 		data[i] = s.data[i];
 	}
+	return *this;
+}
+
+StackArr& StackArr::operator=(StackArr&& s) noexcept
+{
+	std::swap(data, s.data);
+	std::swap(_size, s._size);
+	std::swap(_capacity, s._capacity);
 	return *this;
 }
 

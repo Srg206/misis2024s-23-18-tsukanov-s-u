@@ -9,6 +9,12 @@ QueueLst::QueueLst(const QueueLst& q) noexcept{
 	}
 }
 
+QueueLst::QueueLst(QueueLst&& q) noexcept
+{
+	std::swap(head_, q.head_);
+	std::swap(tail_, q.tail_);
+}
+
 QueueLst::~QueueLst() noexcept
 {
 	Clear();
@@ -23,6 +29,13 @@ QueueLst& QueueLst::operator=(const QueueLst& q) noexcept
 		Push(it->data);
 		it = it->next;
 	}
+	return *this;
+}
+
+QueueLst& QueueLst::operator=(QueueLst&& q) noexcept
+{
+	std::swap(head_,q.head_);
+	std::swap(tail_,q.tail_);
 	return *this;
 }
 

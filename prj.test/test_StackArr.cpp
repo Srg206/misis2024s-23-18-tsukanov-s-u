@@ -48,6 +48,12 @@ TEST_CASE("methods test") {
 }
 TEST_CASE("DDDD") {
 	StackArr s1;
+
+	StackArr s2(std::move(s1));
+
+	StackArr s3;
+	s3 = std::move(s2);
+
 	//s1.Push();
 
 }

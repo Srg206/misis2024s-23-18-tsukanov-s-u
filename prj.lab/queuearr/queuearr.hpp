@@ -13,10 +13,12 @@ public:
 	QueueArr();
 
 	QueueArr(const QueueArr& rhs);
+	QueueArr(QueueArr&& rhs);
 
 	~QueueArr();
 
 	[[nodiscard]] QueueArr& operator=(const QueueArr& rhs);
+	QueueArr& operator=(QueueArr&& rhs);
 
 	[[nodiscard]] bool IsEmpty() const noexcept;
 

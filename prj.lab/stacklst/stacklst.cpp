@@ -1,4 +1,4 @@
-#include "stacklist.hpp"
+#include "stacklst.hpp"
 
 StackLst::StackLst(const StackLst& s) noexcept
 {
@@ -13,6 +13,11 @@ StackLst::StackLst(const StackLst& s) noexcept
 		iter = iter->next;
 		iter_s = iter_s->next;
 	}
+}
+
+StackLst::StackLst(StackLst&& s) noexcept
+{
+	std::swap(head,s.head);
 }
 
 StackLst::~StackLst() noexcept
@@ -35,6 +40,12 @@ StackLst& StackLst::operator=(const StackLst& s) noexcept
 		iter_s = iter_s->next;
 	}
 
+	return *this;
+}
+
+StackLst& StackLst::operator=(StackLst&& s) noexcept
+{
+	std::swap(head, s.head);
 	return *this;
 }
 
@@ -101,3 +112,4 @@ StackLst::Node::Node(const Node& n)
 	data = n.data;
 	next = n.next;
 }
+

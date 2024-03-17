@@ -14,9 +14,11 @@ private:
 public:
 	QueueLst() = default;
 	QueueLst(const QueueLst& q) noexcept;
+	QueueLst(QueueLst&& q) noexcept;
 	~QueueLst() noexcept;
 
 	QueueLst& operator=(const QueueLst& q) noexcept;
+	QueueLst& operator=(QueueLst&& q) noexcept;
 
 	void Push(const Complex& c);
 	void Pop() noexcept;

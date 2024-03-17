@@ -9,8 +9,10 @@ class StackArr {
 public:
 	StackArr() = default;
 	StackArr(const StackArr& s) noexcept;
+	StackArr(StackArr&& s) noexcept;
 	~StackArr() noexcept;
 	StackArr& operator=(const StackArr& s) noexcept;
+	StackArr& operator=(StackArr&& s) noexcept;
 
 	void Push(const Complex& c);
 	void Pop() noexcept;

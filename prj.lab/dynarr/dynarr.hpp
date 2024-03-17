@@ -7,10 +7,12 @@ class DynArr {
 public:
 	DynArr()=default;
 	DynArr( const DynArr &arr);
+	DynArr( DynArr &&arr);
 	DynArr(std::ptrdiff_t s);
 	~DynArr();
 
 	DynArr& operator=(const DynArr& arr);
+	DynArr& operator=(DynArr&& arr);
 	
 	std::ptrdiff_t Size();
 	//std::ptrdiff_t capacity();

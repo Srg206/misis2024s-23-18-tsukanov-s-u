@@ -4,6 +4,7 @@
 #include<iostream>
 TEST_CASE("ctor") {
 	QueueLst my_queue;
+	
 	CHECK_THROWS(my_queue.Top());
 	CHECK_EQ(my_queue.IsEmpty(), 1);
 
@@ -63,6 +64,9 @@ TEST_CASE("ctor") {
 
 	/*my_queue.Push(Complex(2.003, 0));
 	CHECK_EQ(my_queue.Top(), Complex(2.003, 0));*/
+
+	QueueLst myqueue4(std::move(my_queue));
+	my_queue2 = std::move(myqueue4);
 
 
 }

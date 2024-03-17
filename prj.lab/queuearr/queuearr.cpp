@@ -18,6 +18,16 @@ QueueArr::QueueArr(const QueueArr& rhs)
 	}
 }
 
+QueueArr::QueueArr(QueueArr&& rhs)
+{
+	std::swap(data_, rhs.data_);
+	std::swap(size_, rhs.size_);
+	std::swap(capacity_, rhs.capacity_);
+	std::swap(tail_, rhs.tail_);
+	std::swap(head_, rhs.head_);
+
+}
+
 QueueArr::~QueueArr()
 {
 	Clear();
@@ -35,6 +45,17 @@ QueueArr& QueueArr::operator=(const QueueArr& rhs)
 			data_[i] = rhs.data_[i];
 		}
 	}
+	return *this;
+}
+
+QueueArr& QueueArr::operator=(QueueArr&& rhs)
+{
+	std::swap(data_, rhs.data_);
+	std::swap(size_, rhs.size_);
+	std::swap(capacity_, rhs.capacity_);
+	std::swap(tail_, rhs.tail_);
+	std::swap(head_, rhs.head_);
+
 	return *this;
 }
 
