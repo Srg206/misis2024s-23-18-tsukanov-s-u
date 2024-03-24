@@ -1,0 +1,1 @@
+add_library(bitset bitset.cpp bitset.hpp)
