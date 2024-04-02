@@ -2,6 +2,7 @@
 #define COMPLEX_COMPLEX_HPP_20231113
 
 #include<iostream>
+#include <exception>
 #include<cmath>
 #include <sstream>
 #include <string>

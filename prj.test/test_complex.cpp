@@ -4,6 +4,8 @@
 #include <sstream>
 #include <string>
 #include<iostream>
+#include <exception>
+
 
 std::string BoolToStr(bool a) {
 	return a == 0 ? "False" : "True";
@@ -19,7 +21,7 @@ Complex test_Prase(const std::string& s) {
 	istrm >> leftbrace >> a.real >> comma >> a.imaginary >> rightbrace;
 	std::cout << s << "=> ";
 	if (leftbrace != a.Start_Symbol || comma != a.Middle_Division || rightbrace != a.Finish_Symbol) {
-		throw std::exception("  Incorrect Format of input data !!!! ");
+		throw std::invalid_argument("  Incorrect Format of input data !!!! ");
 	}
 	std::cout << a << " correct parsing" << std::endl;
 	return a;

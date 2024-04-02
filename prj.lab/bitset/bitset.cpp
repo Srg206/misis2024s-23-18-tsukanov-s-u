@@ -33,6 +33,9 @@ BitSet& BitSet::operator=(BitSet&& rhs) noexcept
 }
 
 void BitSet::Resize(int s){
+	if (s <= 0) {
+		throw( std::exception( "could not resize to 0 or lower size"));
+	}
 	if (n >= s) {
 		bits.resize(ceil(static_cast<float>(s) / 32));
 	}
@@ -152,6 +155,11 @@ BitSet& BitSet::operator~()
 	return *this;
 }
 
+BitSet::BiA& BitSet::operator[](const uint32_t ind){
+	BiA res(*this, ind);
+	return res;
+}
+
 BitSet operator&(const BitSet& lhs, const BitSet& rhs)
 {
 	int s = (lhs.Size() > rhs.Size()) ? rhs.Size() : lhs.Size();
@@ -218,3 +226,26 @@ BitSet operator~(const BitSet& lhs)
 	}
 	return res;
 }
+
+BitSet::BiA::BiA(BitSet& b_, uint32_t ind_):
+b(b_), ind(ind_)
+{
+}
+
+BitSet::BiA& BitSet::BiA::operator=(const bool bit)
+{
+	b.Set(ind, bit);
+	return *this;
+}
+
+BitSet::BiA::operator bool() const
+{
+	return b.Get(ind);
+}
+
+
+
+//bool BitSet::BiA::opeartor() const{
+//
+//	return b.Get(ind);
+//}

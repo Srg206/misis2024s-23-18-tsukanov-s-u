@@ -51,7 +51,7 @@ Complex& Complex::operator*=(double rhs) {
 Complex& Complex::operator/=(const Complex& rhs) {
 	double del = rhs.real * rhs.real + rhs.imaginary * rhs.imaginary;
 	if (del == 0) {
-		throw std::exception("   ERORR DIVISON BY ZERO!!!!  ");
+		throw std::invalid_argument("   ERORR DIVISON BY ZERO!!!!  ");
 	}
 	Complex tmp1(real, imaginary);
 	Complex tmp2(rhs.real, -rhs.imaginary);
