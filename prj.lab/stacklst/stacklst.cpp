@@ -70,7 +70,7 @@ void StackLst::Pop() noexcept
 const Complex& StackLst::Top() const
 {
 	if (IsEmpty()) {
-		throw(std::exception("The stack is empty"));
+		throw(std::runtime_error("The stack is empty"));
 	}
 	return head->data;
 }
@@ -78,7 +78,7 @@ const Complex& StackLst::Top() const
 Complex& StackLst::Top()
 {
 	if (IsEmpty()) {
-		throw(std::exception("The stack is empty"));
+		throw(std::runtime_error("The stack is empty"));
 	}
 	return head->data;
 }

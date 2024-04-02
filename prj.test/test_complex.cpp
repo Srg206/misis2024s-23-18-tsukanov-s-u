@@ -1,11 +1,9 @@
 // 2022 by Polevoi Dmitry under Unlicense
 #include "../prj.lab/complex/complex.hpp"
-#include<cmath>
+#include <cmath>
 #include <sstream>
 #include <string>
 #include<iostream>
-#include <exception>
-
 
 std::string BoolToStr(bool a) {
 	return a == 0 ? "False" : "True";

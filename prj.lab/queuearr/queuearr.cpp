@@ -96,7 +96,7 @@ void QueueArr::Push(const Complex& val){
 
 Complex& QueueArr::Top(){
 	if (size_ == 0) {
-		throw std::exception("There are no elements in queue");
+		throw std::out_of_range("There are no elements in queue");
 	}
 	else {
 		return data_[head_];
@@ -106,7 +106,7 @@ Complex& QueueArr::Top(){
 const Complex& QueueArr::Top() const
 {
 	if (size_ == 0) {
-		throw std::exception("There are no elements in queue");
+		throw std::out_of_range("There are no elements in queue");
 	}
 	else {
 		return data_[head_];

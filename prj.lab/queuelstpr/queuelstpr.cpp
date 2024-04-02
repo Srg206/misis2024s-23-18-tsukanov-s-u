@@ -93,7 +93,7 @@ bool QueueLstPr::IsEmpty() noexcept
 float QueueLstPr::Top() 
 {
 	if (IsEmpty()) {
-		throw std::exception("There are no elements in queue");
+		throw std::out_of_range("There are no elements in queue");
 	}
 	else {
 		return head->data;

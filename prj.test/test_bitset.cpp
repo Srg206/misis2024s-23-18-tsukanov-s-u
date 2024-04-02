@@ -6,8 +6,6 @@
 #include "doctest.h"
 
 TEST_CASE("Constructors") {
-
-
     BitSet a;
     BitSet b;
     a.Resize(100000000);
@@ -15,8 +13,6 @@ TEST_CASE("Constructors") {
     b.fill(1);
     auto start = std::chrono::steady_clock::now();
    // BitSet c(a);//3985000 ns
-
-
     BitSet c(std::move(a)); //4400 ns
     auto end = std::chrono::steady_clock::now();
 
@@ -91,32 +87,8 @@ TEST_CASE("operators") {
 
     a.print();
     
-}
-
-TEST_CASE("BiA") {
-
-    BitSet bits;
-    bits.Resize(500);
-    srand(time(0));
-
-    bits.Set(81, 1);
 
 
-    for (int i = 1; i < 1000; i++) {
-        //bits[(rand()+1) % 500] = rand() & 2;
-        uint32_t _ind = (rand() % 500)+1;
-        int val = rand()%2;
-        //bits.Set(_ind, val);
-        bits[_ind] = val;
-        //bool(bits[_ind]) = val;
-        //std::cout <<_ind <<" - " << val <<"   " << i << std::endl;
-  
-    }
-    std::cout << std::endl;
-    //bits.print();
-    
-    
-    //std::cout<<bits[3]<<std::endl;
 
 }
 

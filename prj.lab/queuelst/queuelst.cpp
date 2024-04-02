@@ -68,7 +68,7 @@ void QueueLst::Pop() noexcept
 Complex& QueueLst::Top()
 {
 	if (IsEmpty()) {
-		throw std::exception("There are no elements in queue");
+		throw std::out_of_range("There are no elements in queue");
 	}
 	return head_->data;
 }

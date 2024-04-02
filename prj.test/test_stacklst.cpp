@@ -1,4 +1,4 @@
-#include "../prj.lab/StackLst/StackLst.hpp"
+#include <stacklst/stacklst.hpp>
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 

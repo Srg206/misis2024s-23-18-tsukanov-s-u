@@ -1,4 +1,4 @@
-#include"StackArr.hpp"
+#include"stackarr.hpp"
 
 StackArr::StackArr(const StackArr& s) noexcept {
 	data = new Complex[s._capacity];
@@ -65,7 +65,7 @@ void StackArr::Pop() noexcept {
 
 const Complex& StackArr::Top() const {
 	if (_size == 0) {
-		throw std::exception("There are no elements in Stack");
+		throw std::runtime_error("There are no elements in Stack");
 	}
 	return data[_size - 1];
 }
@@ -73,7 +73,7 @@ const Complex& StackArr::Top() const {
 Complex& StackArr::Top()
 {
 	if (_size == 0) {
-		throw std::exception("There are no elements in Stack");
+		throw std::runtime_error("There are no elements in Stack");
 	}
 	return data[_size - 1];
 }

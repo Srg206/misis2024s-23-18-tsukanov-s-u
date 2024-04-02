@@ -7,6 +7,7 @@
 #include <complex/complex.hpp>
 #include<iostream>
 #include <cstddef>
+#include<memory>
 
 class QueueArr {
 public:

@@ -30,7 +30,7 @@ void Rational::shorten_the_fraction() {
 }
 Rational::Rational(const int64_t n, const int64_t d) {
 	if (d == 0) {
-		throw  std::exception("   ERORR: DENOMINATOR CAN`T BE EQUAL ZERO !!!!  ");
+		throw  std::invalid_argument("   ERORR: DENOMINATOR CAN`T BE EQUAL ZERO !!!!  ");
 	}
 	num = n;
 	den = d;
@@ -66,7 +66,7 @@ Rational& Rational::operator*=(const Rational& rhs) {
 
 Rational& Rational::operator/=(const Rational& rhs) {
 	if (rhs.get_num() == 0) {
-		throw std::exception("Erorr division by zero !!!");
+		throw std::invalid_argument("Erorr division by zero !!!");
 	}
 	num = num * rhs.get_den();
 	den = den * rhs.get_num();
@@ -88,7 +88,7 @@ std::ostream& Rational::WriteTo(std::ostream& out) const noexcept
 {
 	out << num << '/' << den;
 	return out;
-	// TODO: вставьте здесь оператор return
+	// TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ return
 }
 
 std::istream& Rational::ReadFrom(std::istream& in)
@@ -103,7 +103,7 @@ std::istream& Rational::ReadFrom(std::istream& in)
 		shorten_the_fraction();
 	}
 	else {
-		throw(std::exception("Format is incorrect"));
+		throw(std::invalid_argument("Format is incorrect"));
 	}
 	return in;
 }

@@ -20,7 +20,7 @@ DynArr::DynArr(DynArr&& arr)
 
 DynArr::DynArr(std::ptrdiff_t s) {
 	if (s < 0) {
-		throw std::exception("Size is less than 0 !!!");
+		throw std::invalid_argument("Size is less than 0 !!!");
 	}
 	size_ = s;
 	capacity_ = s;
@@ -66,7 +66,7 @@ ptrdiff_t DynArr::Size() {
 
 void DynArr::Resize(ptrdiff_t s) {
 	if (s < 0) {
-		throw std::exception("Size is less than 0 !!!");
+		throw std::invalid_argument("Size is less than 0 !!!");
 	}
 	if (s < size_) {
 		for (size_t i = s; i < size_; i++) {
@@ -104,10 +104,10 @@ void DynArr::Resize(ptrdiff_t s) {
 
 const float& DynArr::operator[](ptrdiff_t idx)const {
 	if (idx >= size_) {
-		throw std::exception("Index is out of Array !!!");
+		throw std::invalid_argument("Index is out of Array !!!");
 	}
 	else if (idx < 0) {
-		throw std::exception("Index is less than 0 !!!");
+		throw std::invalid_argument("Index is less than 0 !!!");
 	}
 	else {
 		return data_.get()[idx];
@@ -115,10 +115,10 @@ const float& DynArr::operator[](ptrdiff_t idx)const {
 }
 float& DynArr::operator[](ptrdiff_t idx) {
 	if (idx >= size_) {
-		throw std::exception("Index is out of Array !!!");
+		throw std::invalid_argument("Index is out of Array !!!");
 	}
 	else if (idx < 0) {
-		throw std::exception("Index is less than 0 !!!");
+		throw std::invalid_argument("Index is less than 0 !!!");
 	}
 	else {
 		return data_.get()[idx];
