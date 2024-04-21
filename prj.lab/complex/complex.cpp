@@ -1,9 +1,9 @@
 
 #include "complex/complex.hpp"
 
-Complex::Complex(double re, double img) {
-	real = re;
-	imaginary = img;
+Complex::Complex(double re, double img):
+real(re),imaginary(img)
+{
 }
 Complex::Complex(double re) {
 	real = re;

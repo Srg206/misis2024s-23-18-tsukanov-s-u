@@ -1,5 +1,5 @@
-#ifndef STACKARR_HPP_20231113
-#define STACKARR_HPP_20231113
+#ifndef STACKLST_HPP_20231113
+#define STACKLST_HPP_20231113
 
 #include"../prj.lab/complex/complex.hpp"
 
