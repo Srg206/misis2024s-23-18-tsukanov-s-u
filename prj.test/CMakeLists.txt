@@ -21,7 +21,7 @@ target_link_libraries(test_queuelst queuelst)
 target_link_libraries(test_queuelstpr queuelstpr)
 target_link_libraries(test_queuearr queuearr)
 target_link_libraries(test_bitset bitset)
-target_link_libraries(test_stacklstt stacklstt)
+target_link_libraries(test_stacklstt stacklstt complex)
 
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT test_stacklstt)
