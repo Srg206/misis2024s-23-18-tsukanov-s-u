@@ -1,0 +1,3 @@
+[submodule "prj.cw/PetProject"]
+	path = prj.cw/PetProject
+	url = git@github.com:Srg206/RestApi.prj.git
