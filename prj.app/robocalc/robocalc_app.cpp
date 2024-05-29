@@ -8,8 +8,8 @@
 int main() {
 
 	std::ifstream f("input.txt");
-	RoboCalc r;
-	r.Run(f);
+	RoboCalc r(f);
+	//r.Run(f);
 
 
 

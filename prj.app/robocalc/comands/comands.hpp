@@ -1,68 +1,64 @@
 #include<string>
 #include <sstream>
+#include <vector>
 
 class Comand {
 public:
-	virtual int Execute(std::vector<Comand*>& cmds);
-	Comand read(std::string s);
-	//std::ostream& operator<<(std::ostream& out);
-	Comand(std::string cmd);
-
 	Comand() = default;
+	Comand(std::string cmd);
+	Comand(int v) : comand_value(v) {};
+	virtual ~Comand() = default;
 
-
-	Comand(const Comand& c);
-	Comand(Comand&& c);
-
-	Comand& operator = (const Comand & c);
-	Comand& operator = (Comand && c);
-
-	~Comand() = default;
-private: 
-	std::string txt_comand;
-	int comand_value;
+	virtual void Execute(std::vector<Comand*>& cmds, int skip);
+	virtual void Execute(std::vector<Comand*>& cmds);
+	void set_value(int v) { comand_value = v; };
+	int get_value() { return comand_value; };
 	virtual bool writeable();
+
+
+private: 
+	int comand_value;
 };
+
+
+Comand* createObject(std::string cmd);
 
 
 class OUT: public Comand {
 public:
-	OUT();
-	bool writeable() { return false; };
-	int Execute();
-
+	OUT(int v) : Comand(v) {};
+	bool writeable() override { return false; };
+	void Execute(std::vector<Comand*>& cmds) override;
 };
 
 class ADD : public Comand {
 public:
-	ADD();
+	ADD(int v) : Comand(v) {};
 	bool writeable() { return true; };
-	int Execute();
+	void Execute(std::vector<Comand*>& cmds, int frst) override;
 };
 class SUB : public Comand {
 public:
-	SUB();
+	SUB(int v) : Comand(v) {};
 	bool writeable() { return true; };
-	int Execute();
+	void Execute(std::vector<Comand*>& cmds, int frst);
 };
 class MULL : public Comand {
 public:
-	MULL();
+	MULL(int v) : Comand(v) {};
 	bool writeable() { return true; };
-	int Execute();
+	void Execute(std::vector<Comand*>& cmds, int frst);
 };
 
 class DIV : public Comand {
 public:
-	DIV();
+	DIV(int v) : Comand(v) {};
 	bool writeable() { return true; };
-	int Execute();
+	void Execute(std::vector<Comand*>& cmds, int frst);
 };
-
-
 class REV : public Comand {
 public:
-	REV();
+	REV(int v) : Comand(v) {};
 	bool writeable() { return false; };
-	int Execute();
+	void Execute(std::vector<Comand*>& cmds);
 };
