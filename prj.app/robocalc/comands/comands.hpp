@@ -1,16 +1,17 @@
 #include<string>
 #include <sstream>
 #include <vector>
+#include <iostream>
 
-class Comand {
+class Command {
 public:
-	Comand() = default;
-	Comand(std::string cmd);
-	Comand(int v) : comand_value(v) {};
-	virtual ~Comand() = default;
+	Command() = default;
+	Command(std::string cmd);
+	Command(int v) : comand_value(v) {};
+	virtual ~Command() = default;
 
-	virtual void Execute(std::vector<Comand*>& cmds, int skip);
-	virtual void Execute(std::vector<Comand*>& cmds);
+	virtual int Execute(std::vector<Command*>& cmds, int frst);
+	virtual void Execute(std::vector<Command*>& cmds);
 	void set_value(int v) { comand_value = v; };
 	int get_value() { return comand_value; };
 	virtual bool writeable();
@@ -21,44 +22,44 @@ private:
 };
 
 
-Comand* createObject(std::string cmd);
+Command* createObject(std::string cmd);
 
 
-class OUT: public Comand {
+class OUT: public Command {
 public:
-	OUT(int v) : Comand(v) {};
+	OUT(int v) : Command(v) {};
 	bool writeable() override { return false; };
-	void Execute(std::vector<Comand*>& cmds) override;
+	void Execute(std::vector<Command*>& cmds) override;
 };
 
-class ADD : public Comand {
+class ADD : public Command {
 public:
-	ADD(int v) : Comand(v) {};
-	bool writeable() { return true; };
-	void Execute(std::vector<Comand*>& cmds, int frst) override;
+	ADD(int v) : Command(v) {};
+	bool writeable()override { return true; };
+	int Execute(std::vector<Command*>& cmds, int frst) override;
 };
-class SUB : public Comand {
+class SUB : public Command {
 public:
-	SUB(int v) : Comand(v) {};
-	bool writeable() { return true; };
-	void Execute(std::vector<Comand*>& cmds, int frst);
+	SUB(int v) : Command(v) {};
+	bool writeable()override { return true; };
+	int Execute(std::vector<Command*>& cmds, int frst) override;
 };
-class MULL : public Comand {
+class MUL : public Command {
 public:
-	MULL(int v) : Comand(v) {};
-	bool writeable() { return true; };
-	void Execute(std::vector<Comand*>& cmds, int frst);
+	MUL(int v) : Command(v) {};
+	bool writeable()override { return true; };
+	int Execute(std::vector<Command*>& cmds, int frst) override;
 };
 
-class DIV : public Comand {
+class DIV : public Command {
 public:
-	DIV(int v) : Comand(v) {};
-	bool writeable() { return true; };
-	void Execute(std::vector<Comand*>& cmds, int frst);
+	DIV(int v) : Command(v) {};
+	bool writeable()override { return true; };
+	int Execute(std::vector<Command*>& cmds, int frst) override;
 };
-class REV : public Comand {
+class REV : public Command {
 public:
-	REV(int v) : Comand(v) {};
-	bool writeable() { return false; };
-	void Execute(std::vector<Comand*>& cmds);
+	REV(int v) : Command(v) {};
+	bool writeable()override { return false; };
+	void Execute(std::vector<Command*>& cmds) override;
 };
